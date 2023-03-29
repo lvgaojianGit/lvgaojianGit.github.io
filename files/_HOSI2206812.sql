@@ -170,3 +170,30 @@ BEGIN
   SELECT @Max_IAJ01, 1090, '基础参数', '医保科室名称', '', 0, 2, '医保科室名称'
 END
 Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1090 and IAJ03 = '基础参数' and IAJ04 = '是否启用外伤标志')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1090, '基础参数', '是否启用外伤标志', '', 0, 2, '是/否'
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1090 and IAJ03 = '基础参数' and IAJ04 = '是否启用就诊人群类型')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1090, '基础参数', '是否启用就诊人群类型', '', 0, 2, '是/否'
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1090 and IAJ03 = '基础参数' and IAJ04 = '是否启用就医特殊属性上传')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1090, '基础参数', '是否启用就医特殊属性上传', '是', 0, 2, '是/否'
+END
+Go

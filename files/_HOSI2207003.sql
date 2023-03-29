@@ -253,3 +253,12 @@ BEGIN
   SELECT @Max_IAJ01, 1045, '基础参数', '结算显示就医特殊属性', '否', 0, 2, '结算显示就医特殊属性'
 END
 Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1045 and IAJ03 = '基础参数' and IAJ04 = '身份证读卡器出参顺序')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1045, '基础参数', '身份证读卡器出参顺序', '', 0, 2, '例:身份证|姓名'
+END
+Go

@@ -171,6 +171,25 @@ BEGIN
 END
 Go
 
+if not Exists(Select * from IAJ1 where IAA01 = 995 and IAJ03 = '基础参数' and IAJ04 = '是否启用限制用药')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 995, '基础参数', '是否启用限制用药', '', 0, 2, '是/否'
+END
+Go
+
+
+if not Exists(Select * from IAJ1 where IAA01 = 995 and IAJ03 = '基础参数' and IAJ04 = '启用新输血记录')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 995, '基础参数', '启用新输血记录', '', 0, 2, '是/否'
+END
+
+
 
 insert into T_YBZD (IAA01, cName, cKey, Value) 
 values(995, '查询语句', '清算查询', 'select 
