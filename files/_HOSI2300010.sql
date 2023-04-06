@@ -417,7 +417,7 @@ BEGIN
   Declare @Max_IAJ01 INT
   Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
   Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
-  SELECT @Max_IAJ01 + 0, 1098, '基础参数', '启用新输血记录', '', 0, 2, '是/否'
+  SELECT @Max_IAJ01 + 0, 1098, '基础参数', '启用新输血记录', '是', 0, 2, '是/否'
 END
 Go
 

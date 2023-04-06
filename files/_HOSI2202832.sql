@@ -241,3 +241,39 @@ BEGIN
   SELECT @Max_IAJ01, 1069 , '基础参数', '门诊结算时间选择', '是', 0, 2, '门诊结算时间选择'
 END
 Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1069 and IAJ03 = '基础参数' and IAJ04 = '是否修改结算清单的诊断信息')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1069 , '基础参数', '是否修改结算清单的诊断信息', '', 0, 2, '是/否'
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1069 and IAJ03 = '基础参数' and IAJ04 = '结算清单诊断取值方式')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1069 , '基础参数', '结算清单诊断取值方式', '3', 0, 2, '3病案诊断，10订正诊断'
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1069 and IAJ03 = '基础参数' and IAJ04 = '结算清单手术取值方式')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1069 , '基础参数', '结算清单诊断取值方式', '2720', 0, 2, '2720原手术脚本，25598订正后的手术脚本'
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1069 and IAJ03 = '基础参数' and IAJ04 = '启用新输血记录')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1069 , '基础参数', '启用新输血记录', '是', 0, 2, '是/否'
+END
+Go
