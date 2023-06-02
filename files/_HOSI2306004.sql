@@ -334,11 +334,65 @@ BEGIN
 END
 Go
 
-if not Exists(Select * from IAJ1 where IAA01 = 1067 and IAJ03 = '基础参数' and IAJ04 = 是否手输身份证')
+if not Exists(Select * from IAJ1 where IAA01 = 1067 and IAJ03 = '基础参数' and IAJ04 = '是否手输身份证')
 BEGIN
   Declare @Max_IAJ01 INT
   Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
   Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
   SELECT @Max_IAJ01 + 0, 1067, '基础参数', '是否手输身份证', '否', 0, 2, '是/否'
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1067 and IAJ03 = '基础参数' and IAJ04 = '移动支付门诊退费URL')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1067, '基础参数', '移动支付门诊退费URL', '', 0, 2, ''
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1067 and IAJ03 = '基础参数' and IAJ04 = '移动支付门诊线上退费URL')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1067, '基础参数', '移动支付门诊线上退费URL', '', 0, 2, ''
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1067 and IAJ03 = '基础参数' and IAJ04 = '启用诊间支付')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1067, '基础参数', '启用诊间支付', '', 0, 2, '是/否'
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1067 and IAJ03 = '基础参数' and IAJ04 = '电子处方有效天数')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1067, '基础参数', '电子处方有效天数', '3', 0, 2, '电子处方有效天数'
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1067 and IAJ03 = '基础参数' and IAJ04 = '电子处方是否取HIS处方格式')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1067, '基础参数', '电子处方是否取HIS处方格式', '是', 0, 2, '是/否'
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1067 and IAJ03 = '基础参数' and IAJ04 = '门诊结算是否读卡')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1067, '基础参数', '门诊结算是否读卡', '否', 0, 2, '是/否'
 END
 Go

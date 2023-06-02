@@ -226,3 +226,12 @@ BEGIN
   SELECT @Max_IAJ01, 1078, '医院参数', '油田区划编码', '', 0, 2, '油田区划编码'
 END
 Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1078 and IAJ03 = '医院参数' and IAJ04 = '医保结算等级')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1078, '医院参数', '医保结算等级', '', 0, 2, '医保结算等级'
+END
+Go

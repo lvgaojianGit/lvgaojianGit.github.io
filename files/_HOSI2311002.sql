@@ -252,3 +252,21 @@ BEGIN
   SELECT @Max_IAJ01, 959, '基础参数', '电子处方URL地址', '', 0, 2, ''
 END
 Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 959 and IAJ03 = '基础参数' and IAJ04 = '移动支付门诊退费URL')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 959, '基础参数', '移动支付门诊退费URL', '', 0, 2, ''
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 959 and IAJ03 = '基础参数' and IAJ04 = '移动支付门诊线上退费URL')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 959, '基础参数', '移动支付门诊线上退费URL', '', 0, 2, ''
+END
+Go

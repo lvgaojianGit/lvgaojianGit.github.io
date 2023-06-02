@@ -208,6 +208,15 @@ BEGIN
 END
 Go
 
+if not Exists(Select * from IAJ1 where IAA01 = 1098 and IAJ03 = '医院参数' and IAJ04 = '医院所在地行政区划编码(森工)')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1098, '医院参数', '医院所在地行政区划编码(森工)', '', 0, 2, '医院所在地行政区划编码(森工)'
+END
+Go
+
 if not Exists(Select * from IAJ1 where IAA01 = 1098 and IAJ03 = '医院参数' and IAJ04 = '医保结算等级')
 BEGIN
   Declare @Max_IAJ01 INT
@@ -261,7 +270,7 @@ BEGIN
   Declare @Max_IAJ01 INT
   Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
   Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
-  SELECT @Max_IAJ01 + 0, 1098, '基础参数', '医保日志库名称', '', 0, 2, ''
+  SELECT @Max_IAJ01 + 0, 1098, '基础参数', '医保日志库名称', '', 0, 2, '是/否'
 END
 Go
 
@@ -431,11 +440,30 @@ END
 Go
 
 
-if not Exists(Select * from IAJ1 where IAA01 = 1175 and IAJ03 = '基础参数' and IAJ04 = '是否使用中医诊断')
+if not Exists(Select * from IAJ1 where IAA01 = 1098 and IAJ03 = '基础参数' and IAJ04 = '是否使用中医诊断')
 BEGIN
   Declare @Max_IAJ01 INT
   Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
   Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
-  SELECT @Max_IAJ01 + 0, 1175, '基础参数', '是否使用中医诊断', '否', 0, 2, '是/否'
+  SELECT @Max_IAJ01 + 0, 1098, '基础参数', '是否使用中医诊断', '否', 0, 2, '是/否'
+END
+Go
+
+
+if not Exists(Select * from IAJ1 where IAA01 = 1098 and IAJ03 = '基础参数' and IAJ04 = '电子处方有效天数')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1098, '基础参数', '电子处方有效天数', '3', 0, 2, ''
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1098 and IAJ03 = '基础参数' and IAJ04 = '电子处方是否取HIS处方格式')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1098, '基础参数', '电子处方是否取HIS处方格式', '是', 0, 2, '是/否'
 END
 Go

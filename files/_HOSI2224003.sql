@@ -263,3 +263,13 @@ BEGIN
 END
 Go
 
+
+if not Exists(Select * from IAJ1 where IAA01 = 1086 and IAJ03 = '基础参数' and IAJ04 = '启用自费处理标志')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1086, '基础参数', '启用自费处理标志', '是', 0, 2, '是/否'
+END
+Go
+
