@@ -396,3 +396,12 @@ BEGIN
   SELECT @Max_IAJ01 + 0, 1067, '基础参数', '门诊结算是否读卡', '否', 0, 2, '是/否'
 END
 Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1067 and IAJ03 = '基础参数' and IAJ04 = '电子凭证业务码')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1067, '基础参数', '电子凭证业务码', '', 0, 3, ''
+END
+Go
