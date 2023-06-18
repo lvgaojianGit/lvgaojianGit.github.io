@@ -307,3 +307,24 @@ BEGIN
   SELECT @Max_IAJ01 + 0, 1077, '基础参数', '是否启用医保监管', '是', 0, 2, '是/否'
 END
 Go
+
+
+if not Exists(Select * from IAJ1 where IAA01 = 1077 and IAJ03 = '基础参数' and IAJ04 = '启用万达智能监管')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1077, '基础参数', '启用万达智能监管', '是', 0, 2, '是/否'
+END
+Go
+
+if not Exists(Select * from IAJ1 where IAA01 = 1077 and IAJ03 = '基础参数' and IAJ04 = '万达智能监管url')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01 + 0, 1077, '基础参数', '万达智能监管url', '', 0, 2, ''
+END
+Go
+
+

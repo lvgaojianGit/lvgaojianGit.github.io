@@ -225,3 +225,13 @@ BEGIN
 END
 Go
 
+
+if not Exists(Select * from IAJ1 where IAA01 = 1079 and IAJ03 = '基础参数' and IAJ04 = '是否启用医保监管')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1079, '基础参数', '是否启用医保监管', '', 0, 2, '是/否'
+END
+Go
+

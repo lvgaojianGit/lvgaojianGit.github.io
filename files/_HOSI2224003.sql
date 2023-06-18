@@ -273,3 +273,11 @@ BEGIN
 END
 Go
 
+if not Exists(Select * from IAJ1 where IAA01 = 1086 and IAJ03 = '基础参数' and IAJ04 = '门诊自费药品列表')
+BEGIN
+  Declare @Max_IAJ01 INT
+  Exec Core_NewID 'IAJ1', 'IAJ01', @Max_IAJ01 out
+  Insert Into IAJ1(IAJ01, IAA01, IAJ03, IAJ04, IAJ05, ROWNR, RONLY, IAJ08)
+  SELECT @Max_IAJ01, 1086, '基础参数', '门诊自费药品列表', '', 0, 2, '多个药品编码(bby04)中间用|分隔'
+END
+Go
